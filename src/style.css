@@ -6,9 +6,12 @@
     width: 70em;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     position: relative;
-    background-image: url('./images/guitarWood.jpg');
+    background-image: url('./media/guitarWood.jpg');
 }
 .string {
-    height: 5rem;
+    height: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }

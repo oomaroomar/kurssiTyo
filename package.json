@@ -11,5 +11,13 @@
   "license": "ISC",
   "devDependencies": {
     "electron": "^2.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Toffaha/kurssiTyo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Toffaha/kurssiTyo/issues"
+  },
+  "homepage": "https://github.com/Toffaha/kurssiTyo#readme"
 }
