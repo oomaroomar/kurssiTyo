@@ -1,4 +1,4 @@
-let canvases = document.querySelectorAll('.string')
+const canvases = document.querySelectorAll('.string')
 let thickness = 17.5
 
 canvases.forEach(canvas => {
@@ -15,5 +15,9 @@ canvases.forEach(canvas => {
 })
 
 function playSound(e) {
-    console.log(e.fromElement.dataset)
+    console.log(this.dataset.chord)
+    const audio = document.querySelector(`audio[data-chord="${this.dataset.chord}"]`)
+    audio.volume = 0.2
+    audio.currentTime = 0
+    audio.play()
 }
