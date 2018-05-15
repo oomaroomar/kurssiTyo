@@ -1,0 +1,14 @@
+.guitar {
+    display: flex;
+}
+#neck {
+    height: 20em;
+    width: 70em;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-image: url('./images/guitarWood.jpg');
+}
+.string {
+    height: 5rem;
+}

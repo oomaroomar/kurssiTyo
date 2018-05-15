@@ -1,0 +1,15 @@
+{
+  "name": "kurssityo",
+  "version": "1.0.0",
+  "description": "html5 kurssin endproject",
+  "main": "start.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Omar",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^2.0.0"
+  }
+}
