@@ -21,3 +21,24 @@ function playSound(e) {
     audio.currentTime = 0
     audio.play()
 }
+
+const picks = document.querySelectorAll('.picks>*')
+const backdrops = document.querySelectorAll('.backdrop>*')
+
+backdrops.forEach(backdrop => {
+    backdrop.addEventListener('click', handleBackClick)
+})
+
+picks.forEach(pick => {
+    pick.addEventListener('click', handleCursorClick)
+})
+
+function handleCursorClick(e) {
+    console.log(e.target.src)
+    document.body.style.cursor = `url('${e.target.src}'), auto`
+}
+
+function handleBackClick(e) {
+    console.log(e.target)
+    document.body.style.backgroundImage = `url('${e.target.src}'), auto`
+}
