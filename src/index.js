@@ -39,6 +39,6 @@ function handleCursorClick(e) {
 }
 
 function handleBackClick(e) {
-    console.log(e.target)
-    document.body.style.backgroundImage = `url('${e.target.src}'), auto`
+    console.log(e.target.src)
+    document.body.style.backgroundImage = `url('${e.target.src}')`
 }
