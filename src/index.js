@@ -66,6 +66,7 @@ function canvasMake(testCanvas, testAudio) {
         
         analyser.getByteTimeDomainData(dataArray)
         ctx.strokeStyle = 'black'
+        ctx.lineWidth = 5
         ctx.beginPath()
         let sliceWidth = testCanvas.width*1.0/bufferLength
         let x = 0

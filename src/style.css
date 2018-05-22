@@ -1,13 +1,12 @@
 .guitar {
     display: flex;
-    height: 100vh;
-    width: 100vh;
+    height: 100vw;
+    width: 100vw;
     flex-direction: column;
-    align-items: flex-start;
-    align-content: center;
+    align-items:  center;
 }
 .controls {
-    height: 15vw;
+    height: 8vw;
     width: 100vw;
     margin: 1em;
     display: flex;
@@ -34,7 +33,7 @@
     margin-left: 15px;
 }
 #neck {
-    height: 100vh;
+    height: 90vh;
     width: 50rem;
     display: flex;
     flex-direction: column;
@@ -44,10 +43,12 @@
 }
 .string {
     height: 2rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    width: 47.3rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 body {
     background-image: url('./media/background.jpg');
     background-size: cover;
+    overflow: hidden;
 }
