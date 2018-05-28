@@ -1,27 +1,26 @@
 const canvases = document.querySelectorAll('.string')
 const audios = document.querySelectorAll('audio')
-const theCanvas = canvases[0]
-const theAudio = audios[0]
-let thickness = 17.5
+
 
 canvases.forEach((canvas, i) => {
-    // let ctx = canvas.getContext('2d')
-    // ctx.filStyle = 'black'
-    // ctx.lineWidth = thickness
-    // ctx.beginPath()
-    // ctx.moveTo(-300, 75)
-    // ctx.lineTo(300, 70)
-    // ctx.stroke()
-    // thickness-= 0.5
-    
-    canvasMake(canvas, audios[i])()
-    canvas.addEventListener('mouseleave', playSound)
+    const maker = canvasMake(canvas, audios[i])
+    //canvasMake(canvas, audios[i])()
+    canvas.addEventListener('mouseleave', e => {
+        const audio = document.querySelector(`audio[data-chord="${e.target.dataset.chord}"]`)
+        audio.volume = 0.5
+        if(audio.currentTime == 0)  maker.draw()
+        audio.currentTime = 0.1
+        audio.play()
+    })
+    audios[i].addEventListener('ended', () => {
+        maker.cancel()
+    })
+
 })
 
 function playSound(e) {
-    console.log(this.dataset.chord)
     const audio = document.querySelector(`audio[data-chord="${this.dataset.chord}"]`)
-    audio.volume = 0.2
+    audio.volume = 0.5
     audio.currentTime = 0
     audio.play()
 }
@@ -49,8 +48,7 @@ function handleBackClick(e) {
 
 //i dont understand code under this comment
 function canvasMake(testCanvas, testAudio) {
-    let ctx, source, context, analyser, bufferLength, dataArray, bars = 100, barX, barY, width = 2, height = 2, up
-
+    let ctx, source, context, analyser, bufferLength, dataArray, bars = 100, barX, barY, width = 2, height = 2, up, animationFrame
     context = new AudioContext()
     analyser = context.createAnalyser()
 
@@ -61,9 +59,14 @@ function canvasMake(testCanvas, testAudio) {
     dataArray = new Uint8Array(bufferLength)
     ctx = testCanvas.getContext('2d')
 
+    function cancel() {
+        testAudio.currentTime = 0
+        window.cancelAnimationFrame(animationFrame)
+    }
+
     function draw() {
+        console.log('test')
         ctx.clearRect(0, 0, testCanvas.width, testCanvas.height)
-        
         analyser.getByteTimeDomainData(dataArray)
         ctx.strokeStyle = 'black'
         ctx.lineWidth = 5
@@ -82,8 +85,15 @@ function canvasMake(testCanvas, testAudio) {
         }
         ctx.lineTo(testCanvas.width, testCanvas.height/2)
         ctx.stroke()
-        window.requestAnimationFrame(draw)
+        animationFrame = window.requestAnimationFrame(draw)
     }
 
-    return draw
+    return {
+        draw: () => {
+            draw()
+        },
+        cancel: () => {
+            cancel()
+        }
+    }
 }
