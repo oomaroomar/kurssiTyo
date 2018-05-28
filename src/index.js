@@ -5,6 +5,8 @@ const audios = document.querySelectorAll('audio')
 canvases.forEach((canvas, i) => {
     const maker = canvasMake(canvas, audios[i])
     //canvasMake(canvas, audios[i])()
+    maker.draw()
+    maker.cancel()
     canvas.addEventListener('mouseleave', e => {
         const audio = document.querySelector(`audio[data-chord="${e.target.dataset.chord}"]`)
         audio.volume = 0.5
@@ -62,6 +64,10 @@ function canvasMake(testCanvas, testAudio) {
     function cancel() {
         testAudio.currentTime = 0
         window.cancelAnimationFrame(animationFrame)
+        ctx.beginPath()
+        ctx.moveTo(0,testCanvas.height/2)
+        ctx.lineTo(testCanvas.width, testCanvas.height/2)
+        ctx.stroke()
     }
 
     function draw() {
