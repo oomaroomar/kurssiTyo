@@ -48,7 +48,6 @@ function handleBackClick(e) {
     document.body.style.backgroundImage = `url('${e.target.src}')`
 }
 
-//i dont understand code under this comment
 function canvasMake(testCanvas, testAudio) {
     let ctx, source, context, analyser, bufferLength, dataArray, bars = 100, barX, barY, width = 2, height = 2, up, animationFrame
     context = new AudioContext()
